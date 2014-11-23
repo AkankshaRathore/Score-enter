@@ -1,46 +1,31 @@
+
 <?php 
 require "connect.php";
-$username=$_POST['username'];
-$password=$_POST['password'];
-$sql = "SELECT * from user WHERE pwd= '".$password ."' AND u_name='".$username."'";
-echo $sql;
-$result = $con->query($sql);
-
-
-    // output data of each row
-    echo "yy";
-    while($row = $result->fetch_assoc()) {
-        echo  "<th>".$row['u_name']."</th>";
-    }
-	echo '<th>Total</th>';
- 
-
+ob_start();
+session_start();
 ?>
 <?php
-/*session_start(); // Starting Session
-$error=''; // Variable To Store Error Message
-if (isset($_POST['submit'])) 
-{
-	echo "run";
-if (empty($_POST['username']) || empty($_POST['password'])) {
-$error = "Username or Password is invalid";
-echo "run";
-}
-else
-{
-// Define $username and $password
-$username=$_POST['username'];
-$password=$_POST['password'];
-// SQL query to fetch information of registerd users and finds user match.
-$query = mysqli_query($con,"SELECT * from user WHERE pwd=$password AND u_name=$username");
-//$rows = mysqli_num_rows($query);
-if ($row = mysqli_fetch_array($query)) {
-$_SESSION['login_user']=$username; // Initializing Session
-header("location: index.php"); // Redirecting To Other Page
-} else {
-$error = "Username or Password is invalid";
-}
-mysqli_close($con); // Closing Connection
-}
-}*/
+	if(isset($_POST['username']) and isset($_POST['password']))
+	{
+		$username = $_POST['username'];
+		$password = $_POST['password'];
+		if(!empty($username) and !empty($password))
+		{			
+			$result = mysqli_query($con,"Select * from user where u_name ='".$username."' and pwd = '".$password."'") or die(mysqli_error($con));
+			$row = mysqli_fetch_array($result);
+			if($row['u_name']==$username and $row['pwd']==$password)
+			{
+				$_SESSION['username'] = $username;
+				header("location: ScoreEnterUI.php");
+			}
+			else
+			{
+				echo " <center> <h3> Invalid Username/Password Combination </h3> </center>";
+				header("location: login.html");
+			}
+			mysqli_close($con);
+		}
+		
+	}
+	
 ?>
