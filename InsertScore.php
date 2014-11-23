@@ -11,6 +11,7 @@
  if($result)
  {
  echo "Team Score enter successfully!!";
+ header("location: ScoreEnterUI.php");
  }
  
  
