@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
+<link rel="stylesheet" href="FormValidation.css">
+<script type="text/javascript" src="MyFormValidation.js" ></script>
+<script>
+//Function for allowing only numbers in postal code and phone numbers... 
+//Here 8 is for backspace key, 37 for left arrow key and 39 for right arrow key and 9 is for Tab.
+//Here is a problem that ascii key conflicts occur at 37 and 39 % and ' also work.
+function onlyNumbers(event)				
+{
+    	var e =event; 
+   	var charCode = e.which || e.keyCode;
+
+    		if ((charCode >= 48 && charCode <= 57) || charCode == 8 || charCode == 37 || charCode == 39 || charCode == 9) 
+       			 return true;
+			else
+				 return false;
+
+}
+function onlyChars(event)
+{
+	var e =event;
+	var charCode = e.which || e.keyCode;
+	if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || charCode == 8 || charCode == 9)
+		return true;
+	else 
+		return false;
+}
+/*Function used to copy the current address to permanent address*/
+function Copy(add)
+{
+	if(add.checkme.checked==true)
+	{
+		add.permanentaddress.value=add.currentaddress.value;
+	}
+}
+function digitsonly(e)
+{
+	var data=document.getElementById('cnumber').value;
+	if(data.Length!=10)
+       {
+       alert("Please enter 10 digits");
+       return false;
+       }
+    else
+    	return true;   
+}
+</script>
+</head>
+<body>
+	<div>  <!-- This div for outermost panel where panel property is removed-->
+		<div <h1 class="panel-primary-default" <br><center><img src="xpressions.jpg" width="900" height="200"></center></h1></div>
+			<div class="panel panel-primary">
+				<body style="background-color:#000;">
+					<div class="container">
+						<div class="row">
+							<div class="col-md-2"></div>
+							<div class="col-md-8" style="">
+								<div class="col-md-2"></div>
+								
+								<!-- starting inside panel -->
+								
+									
+										
+										
+												
+	
+					
+									<br>
+										<select onchange="enterscore(this.value)" name="teamname" class="form-control">
+											<option>Select A Team </option>
+											<option value="1">Team1 </option>
+											<option value="2">Team2 </option>
+											<option value="3">Team3 </option>
+											<option value="4">Team4 </option>
+											<option value="5">Team5 </option>
+											<option value="6">Team6 </option>
+											<option  value="7">Team7 </option>
+											<option value="8">Team8 </option>
+											<option value="9">Team9 </option>
+											<option value="10">Team10 </option>
+											<option value="11">Team11 </option>
+											<option value="12">Team12 </option>
+											<option value="13">Team13 </option>
+											<option value="14">Team14 </option>
+										</select>
+										<form role="form" method="POST" id="theForm" action="r.php"> 
+													
+													
+													
+													
+										<table id="table1" style="border:1px solid grey" class="table">
+										
+											<script>
+											function enterscore(x)
+											{
+												var teamno=x;   /* the teamno fetched from team selection dropdown */
+											
+											
+												var events=5;  /* no of events */
+												msg = '';
+												for (i=1;i<=events;i++)
+													msg += "<tr><td>" + i + "</td><td><input type='text' name='e" + teamno + i + "' class='form-control' placeholder='Enter Event Name'><td><input type='text' name='s" + teamno + i + "' class='form-control' style='width:80px' placeholder='Score'></td></tr>";
+					
+														
+												document.getElementById('table1').innerHTML=msg;
+												$('#submit').css('visibility','visible');
+											}
+														
+											</script>													
+										</table>
+												
+		
+			
+			
+												
+										<center>
+											<input required="required" style="visibility:hidden" class="btn btn-success" type="submit" value="Submit" id="submit">
+												
+										</form>
+
+										
+									
+                                    <!-- ending inside panel -->
+								
+							</div>			
+						</div>
+					</div><!---container's div-->
+				</body>
+			</div>
+	</div>	
+
+	
+</body>
+
+
+</html>
+

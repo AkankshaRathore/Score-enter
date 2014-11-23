@@ -1,0 +1,38 @@
+<html class="full" lang="en">
+<!-- Make sure the <html> tag is set to the .full CSS class. Change the background image in the full.css file. -->
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Login</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+</head>
+   <div class="container" data-bind="load: loadData()">
+		
+		<h3>Login :<h3>
+	  <div class="row">
+		<div class="col-md-4">
+		<form action="login.php" method="post">
+		
+		  <h4>Username</h4>
+		  <input type="text" data-bind="value:uname, hasfocus: username_focus()" name="username" class="form-control inputWidth" placeholder="Enter your username" />
+		  
+		  <h4>Password</h4>
+		  <input type="password" data-bind="value:pwd" name="password" placeholder="Enter your password" class="form-control required" >
+		  
+		  <br><button class="btn btn-md btn-primary" name="submit" type="submit">Submit</button>  
+		  
+		  </font>
+		</form>
+		</div>
+	  </div>
+	</div>
+<!-- /.container -->
+</html>
