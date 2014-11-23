@@ -1,8 +1,11 @@
 <!DOCTYPE html>
 <?php
    require 'connect.php';
-   // if(isset($_SESSION['username']))
-   // {
+   session_start();
+   
+   
+   if(isset($_SESSION['username']))
+   {
    
 ?>
 <html>
@@ -72,7 +75,7 @@ function digitsonly(e)
 															
 										
 																						
-	
+	                                   <a href ="logout.php">Logout </a>
 					
 									<br>
 									 <form role="form" method="POST" id="theForm" action="InsertScore.php"> 
@@ -166,10 +169,10 @@ function digitsonly(e)
 
 </html>
 <?php
-/* }
+}
 else
 {
 header("location: login.html"); // Redirecting To Other Page
-} */
+} 
 ?>
 
