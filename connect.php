@@ -1,8 +1,8 @@
 <?php
 	$host = "localhost";
 	$user = "root";
-	$pass = "";
-	$db_name = "xpression14";
+	$pass = "ScoreMaster";
+	$db_name = "xpression2014";
 	//echo "connecting to db";
 	$con = mysqli_connect($host, $user, $pass, $db_name);
 	//echo "connected to db";

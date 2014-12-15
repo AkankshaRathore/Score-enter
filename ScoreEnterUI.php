@@ -78,7 +78,7 @@ function digitsonly(e)
 	                                   <a href ="logout.php">Logout </a>
 					
 									<br>
-									 <form role="form" method="POST" id="theForm" action="InsertScore.php"> 
+									 <form role="form" method="POST" id="theForm" action="#"> 
 
 										<select name="teamname" class="form-control">
 										<option>Select Team </option>
@@ -111,13 +111,13 @@ function digitsonly(e)
 												echo "<option value=".$eid.">".$event_name."</option>";
 								        }
 										?>
-											
+										echo "<option value=50>Day 0 theme events</option>;	
 										</select> <br/><br/><br/>
 										
 										<input type='text' name='scr' class='form-control' placeholder='Enter score'>
 										<br/><br/><br/>
 													
-													
+										
 													
 										<!--Useless		
 										<table id="table1" style="border:1px solid grey" class="table">
@@ -148,7 +148,7 @@ function digitsonly(e)
 			
 												
 										<center>
-											<input required="required" class="btn btn-success" type="submit" value="Submit" id="submit">
+											<input required="required" class="btn btn-success" type="submit" name="submit" value="Submit" id="submit">
 												
 										</form>
 
@@ -169,6 +169,22 @@ function digitsonly(e)
 
 </html>
 <?php
+
+// require 'connect.php';
+if(!empty($_POST['scr'])&&!empty($_POST['teamname'])&&!empty($_POST['eventname'])){
+$Score = $_POST['scr'];
+$team =$_POST['teamname'];
+$event = $_POST['eventname'];
+ 
+ $sql_query = "UPDATE score SET marks=".$Score." WHERE tid=".$team." AND eventid=".$event;
+
+ $result =  mysqli_query($con,$sql_query);
+ if($result)
+ {
+ echo "Team Score enter successfully!!";
+ //header("location: ScoreEnterUI.php");
+ }
+}
 }
 else
 {
